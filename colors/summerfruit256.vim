@@ -26,7 +26,7 @@ let g:colors_name="summerfruit256"
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{{
     " returns an approximate grey index for the given grey level
-    fun <SID>grey_number(x)
+    fun! <SID>grey_number(x)
         if &t_Co == 88
             if a:x < 23
                 return 0
@@ -65,7 +65,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the actual grey level represented by the grey index
-    fun <SID>grey_level(n)
+    fun! <SID>grey_level(n)
         if &t_Co == 88
             if a:n == 0
                 return 0
@@ -98,7 +98,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index for the given grey index
-    fun <SID>grey_color(n)
+    fun! <SID>grey_color(n)
         if &t_Co == 88
             if a:n == 0
                 return 16
@@ -119,7 +119,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns an approximate color index for the given color level
-    fun <SID>rgb_number(x)
+    fun! <SID>rgb_number(x)
         if &t_Co == 88
             if a:x < 69
                 return 0
@@ -146,7 +146,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the actual color level for the given color index
-    fun <SID>rgb_level(n)
+    fun! <SID>rgb_level(n)
         if &t_Co == 88
             if a:n == 0
                 return 0
@@ -167,7 +167,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index for the given R/G/B color indices
-    fun <SID>rgb_color(x, y, z)
+    fun! <SID>rgb_color(x, y, z)
         if &t_Co == 88
             return 16 + (a:x * 16) + (a:y * 4) + a:z
         else
@@ -176,7 +176,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index to approximate the given R/G/B color levels
-    fun <SID>color(r, g, b)
+    fun! <SID>color(r, g, b)
         " get the closest grey
         let l:gx = <SID>grey_number(a:r)
         let l:gy = <SID>grey_number(a:g)
@@ -211,7 +211,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " returns the palette index to approximate the 'rrggbb' hex string
-    fun <SID>rgb(rgb)
+    fun! <SID>rgb(rgb)
         let l:r = ("0x" . strpart(a:rgb, 0, 2)) + 0
         let l:g = ("0x" . strpart(a:rgb, 2, 2)) + 0
         let l:b = ("0x" . strpart(a:rgb, 4, 2)) + 0
@@ -220,7 +220,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     endfun
 
     " sets the highlighting for the given group
-    fun <SID>X(group, fg, bg, attr)
+    fun! <SID>X(group, fg, bg, attr)
         if a:fg != ""
             exec "hi " . a:group . " guifg=#" . a:fg . " ctermfg=" . <SID>rgb(a:fg)
         endif
@@ -305,17 +305,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("jinjaAttribute", "dd7700", "fbf4c7", "")
     call <SID>X("jinjaSpecial", "008ffd", "fbf4c7", "")
 
-    " delete functions {{{
-    delf <SID>X
-    delf <SID>rgb
-    delf <SID>color
-    delf <SID>rgb_color
-    delf <SID>rgb_level
-    delf <SID>rgb_number
-    delf <SID>grey_color
-    delf <SID>grey_level
-    delf <SID>grey_number
-    " }}}
+    " VimDiff
+    call <SID>X("DiffAdd", "", "ffcccc", "")
+    call <SID>X("DiffDelete", "", "ffcccc", "")
+    call <SID>X("DiffChange", "", "ffcccc", "")
+    call <SID>X("DiffText", "", "ffaaaa", "")
 endif
 
 " vim: set fdl=0 fdm=marker:
