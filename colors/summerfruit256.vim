@@ -227,7 +227,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         if a:bg != ""
             exec "hi " . a:group . " guibg=#" . a:bg . " ctermbg=" . <SID>rgb(a:bg)
         endif
-        if a:attr != ""
+
+        if a:attr == ""
+            exec "hi " . a:group . " gui=NONE cterm=NONE"
+        else
             exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
         endif
     endfun
