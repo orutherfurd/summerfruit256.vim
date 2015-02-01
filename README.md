@@ -1,6 +1,6 @@
 summerfruit256
 ==============
-A fruity colourscheme for vim and macvim.
+A fruity 256-colour colourscheme for vim, macvim and gvim.
 
 History
 -------
