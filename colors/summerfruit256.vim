@@ -255,6 +255,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("CursorLine", "", "c0d9eb", "")
     call <SID>X("LineNr", "eeeeee", "438ec3", "bold")
     call <SID>X("MatchParen", "", "", "")
+    call <SID>X("Visual", "", "dddddd", "")
 
     " Specials
     call <SID>X("Todo", "e50808", "dbf3cd", "bold")
