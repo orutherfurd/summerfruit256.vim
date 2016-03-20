@@ -1,11 +1,12 @@
 " Vim color file
-" Maintainer: Martin Baeuml <baeuml@gmail.com>
-" Last Change: 2008-02-09
+" Maintainer: James Pickard <james.pickard@gmail.com>
+" Last Change: 2016-02-20
 "
-" This color file is a modification of the "summerfruit" color scheme by Armin Ronacher
-" so that it can be used on 88- and 256-color xterms. The colors are translated
-" using Henry So's programmatic approximation of gui colors from his "desert256"
-" color scheme.
+" This color file is a modification of the "summerfruit" color scheme by by
+" Martin Baeuml <baeuml@gmail.com> which was a modification of the
+" "summerfruit" colorscheme by Armin Ronacher so that it can be used on 88-
+" and 256-color xterms. The colors are translated using Henry So's
+" programmatic approximation of gui colors from his "desert256" color scheme.
 "
 " I removed the "italic" option and the background color from
 " comment-coloring because that looks odd on my console.
@@ -314,6 +315,13 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("DiffDelete", "", "ffcccc", "")
     call <SID>X("DiffChange", "", "ffcccc", "")
     call <SID>X("DiffText", "", "ffaaaa", "")
+
+    " SignColumn, used for Neomake.
+    call <SID>X("SignColumn", "eeeeee", "bbbbbb", "bold")
+    call <SID>X("ModeMsg", "eeeeee", "bbbbbb", "bold")
+
+    " NERDTree
+    call <SID>X("NERDTreeBookmarksLeader", "ffffff", "ffffff", "bold")
 endif
 
 " vim: set fdl=0 fdm=marker:
