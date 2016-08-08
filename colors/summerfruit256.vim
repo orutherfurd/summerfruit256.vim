@@ -19,6 +19,10 @@ hi clear
 syntax reset
 let g:colors_name = "summerfruit256"
 
+if !has("gui_running")
+    let g:indent_guides_auto_colors = 0
+endif
+
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{
         " returns an approximate grey index for the given grey level
@@ -252,6 +256,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
         " NERDTree
         call <SID>X("NERDTreeBookmarksLeader", s:background, s:background, "bold")
+
+        " VIM Indent Guides
+        call <SID>X("IndentGuidesOdd", "", "444444", "")
+        call <SID>X("IndentGuidesEven", "", "3a3a3a", "")
     else
         let s:background = "ffffff"
 
@@ -271,6 +279,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
         " NERDTree
         call <SID>X("NERDTreeBookmarksLeader", s:background, s:background, "bold")
+
+       " VIM Indent Guides
+        call <SID>X("IndentGuidesOdd", "", "87ffff", "")
+        call <SID>X("IndentGuidesEven", "", "5fffff", "")
     endif
 
 
