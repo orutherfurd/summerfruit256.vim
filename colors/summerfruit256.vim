@@ -19,6 +19,10 @@ hi clear
 syntax reset
 let g:colors_name = "summerfruit256"
 
+if !has("gui_running")
+    let g:indent_guides_auto_colors = 0
+endif
+
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " functions {{
         " returns an approximate grey index for the given grey level
@@ -218,16 +222,16 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         " sets the highlighting for the given group
         fun! <SID>X(group, fg, bg, attr)
             if a:fg != ""
-                exec "hi " . a:group . " guifg=#" . a:fg
+                exec "hi " . a:group . " guifg=#" . a:fg . " ctermfg=" . <SID>rgb(a:fg)
             endif
             if a:bg != ""
-                exec "hi " . a:group . " guibg=#" . a:bg
+                exec "hi " . a:group . " guibg=#" . a:bg . " ctermbg=" . <SID>rgb(a:bg)
             endif
 
             if a:attr == ""
-                exec "hi " . a:group . " gui=NONE"
+                exec "hi " . a:group . " gui=NONE cterm=NONE"
             else
-                exec "hi " . a:group . " gui=" . a:attr
+                exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
             endif
         endfun
     " }}
@@ -252,6 +256,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
         " NERDTree
         call <SID>X("NERDTreeBookmarksLeader", s:background, s:background, "bold")
+
+        " VIM Indent Guides
+        call <SID>X("IndentGuidesOdd", "", "444444", "")
+        call <SID>X("IndentGuidesEven", "", "3a3a3a", "")
     else
         let s:background = "ffffff"
 
@@ -271,6 +279,10 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
         " NERDTree
         call <SID>X("NERDTreeBookmarksLeader", s:background, s:background, "bold")
+
+       " VIM Indent Guides
+        call <SID>X("IndentGuidesOdd", "", "87ffff", "")
+        call <SID>X("IndentGuidesEven", "", "5fffff", "")
     endif
 
 
