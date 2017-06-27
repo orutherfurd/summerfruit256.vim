@@ -264,8 +264,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
         let s:background = "ffffff"
 
         call <SID>X("Normal", "000000", s:background, "")
-        call <SID>X("NonText", "438ec3", "b7dce8", "")
-
+        "call <SID>X("NonText", "438ec3", "b7dce8", "")
+        call <SIX>X("NonText", "ecf3f9", s:background, "")
+        
         call <SID>X("CursorLine", "", "c0d9eb", "")
         call <SID>X("CursorLineNr", "aa0000", "", "bold")
         call <SID>X("Folded", "3c78a2", "c3daea", "")
