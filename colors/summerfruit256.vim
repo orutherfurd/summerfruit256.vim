@@ -341,7 +341,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("jinjaString", "0086d2", "fbf4c7", "")
     call <SID>X("jinjaNumber", "bf0945", "fbf4c7", "bold")
     call <SID>X("jinjaStatement", "fb660a", "fbf4c7", "bold")
-    call <SID>X("jinjaComment", "008800", "002300", "italic")
+    call <SID>X("jinjaComment", "545454", "eeeeee", "")
     call <SID>X("jinjaFilter", "ff0086", "fbf4c7", "")
     call <SID>X("jinjaRaw", "aaaaaa", "fbf4c7", "")
     call <SID>X("jinjaOperator", "ffffff", "fbf4c7", "")
